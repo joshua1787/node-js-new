@@ -24,6 +24,9 @@ jobs:
       - name: Build Docker image
         run: docker build -t hello-world-node .
 
+      - name: Set AWS Default Region
+        run: echo "export AWS_DEFAULT_REGION=eu-north-1" >> $GITHUB_ENV
+
       - name: Login to Amazon ECR
         id: login-ecr
         uses: aws-actions/amazon-ecr-login@v1
@@ -31,7 +34,6 @@ jobs:
           mask-password: false
           registry-type: private
           skip-logout: false
-          region: ${{ secrets.AWS_REGION }}
 
 
       - name: Build, tag, and push image to ECR
