@@ -36,7 +36,7 @@ jobs:
           mask-password: false
           registry-type: private
           skip-logout: false
-          region: ${{ secrets.AWS_REGION }}
+          Region: eu-north-1
 
       - name: Build, tag, and push image to ECR
         run: |
